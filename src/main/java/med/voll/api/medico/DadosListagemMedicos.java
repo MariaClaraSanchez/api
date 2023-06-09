@@ -1,5 +1,7 @@
 package med.voll.api.medico;
 
+import med.voll.api.pacientes.Paciente;
+
 public record DadosListagemMedicos(Long id, String nome, String email, String crm, Especialidade especialidade) {
 
     public DadosListagemMedicos(Medico medico){
