@@ -18,13 +18,15 @@ public interface MedicoRepository extends JpaRepository<Medico, Long> {
             m.especialidade = :especialidade
             and
             m.id not in(
-                select c.medico from Consulta c
+                select c.medico.id from Consulta c
                 where
                 c.data = :data
+        and
+                c.motivoCancelamento is null
             )
             order by rand()
             limit 1
-            """)
+      """)
     // Os : é para dizer que vai receber o parametro do método.
     Medico escolherMedicoAleatorioLivreData(Especialidade especialidade, LocalDateTime data);
 
